@@ -1,4 +1,4 @@
 regio
 =====
 
-Minimalist web framework with express-like aspirations
+Minimalist web framework, for embedded devices, with express-like aspirations.
