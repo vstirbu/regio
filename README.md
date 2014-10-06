@@ -20,6 +20,32 @@ So, I've decided to keep the test framework around and use express middleware an
 npm install regio
 ```
 
+## Usage
+
+```javascript
+var regio = require('regio');
+
+var app = regio();
+
+app.get('/', function(req, res) {
+  res.status(200).end();
+});
+
+var middleware = regio.router();
+
+middleware('/', function (req, res) {
+  res.status(200).send({
+    message: 'I\'m a middleware'
+  }).end();
+});
+
+app.use('/middleware', middleware);
+
+var server = app.listen(8080, function() {
+  console.log('app started on port', server.address().port);
+});
+```
+
 ## Express compatibility
 
 * Application
