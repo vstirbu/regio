@@ -62,8 +62,15 @@ test('middleware', function (t) {
 });
 
 test('params', function (t) {
-  request.get(baseUrl + '/pathWith/123').end(function (res) {
+  request.get(baseUrl + '/a/123').end(function (res) {
     t.deepEqual(res.body, { param: '123' }, 'get parameters values');
+    t.end();
+  });
+});
+
+test('multiple params', function (t) {
+  request.get(baseUrl + '/a/123/abc/xyz').end(function (res) {
+    t.deepEqual(res.body, { param: '123', foo: 'xyz'}, 'get multiple param values');
     t.end();
   });
 });

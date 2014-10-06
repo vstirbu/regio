@@ -1,12 +1,16 @@
 {
   "name": "regio",
-  "version": "0.1.0",
-  "description": "Minimalistic web development framework for embedded devices, aspiring to have Express API surface",
+  "version": "0.1.1",
+  "description": "Minimalist web framework with express-like aspirations, targeted at embedded devices.",
   "main": "lib/index.js",
   "scripts": {
     "test": "node ./test"
   },
   "author": "Vlad Stirbu",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vstirbu/regio.git"
+  },
   "license": "MIT",
   "dependencies": {
     "methods": "^1.1.0",

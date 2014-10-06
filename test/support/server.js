@@ -3,25 +3,25 @@ var regio = require('../../lib/');
 app = regio();
 
 app.get('/get', function (req, res, next) {
-  res.status(200).end('');
+  res.status(200).end();
 });
 
 app.post('/post', function (req, res, next) {
-  res.status(202).end('');
+  res.status(202).end();
 });
 
 app.get('/getJson', function (req, res, next) {
   res.status(200).send({
     test: 'test'
-  }).end('');
+  }).end();
 });
 
 app.get('/noMethod', function (req, res, next) {
-  res.status(200).end('');
+  res.status(200).end();
 });
 
 app.all('/allRoute', function (req, res, next) {
-  res.status(202).end('');
+  res.status(202).end();
 });
 
 app.get('/middleware', function (req, res, next) {
@@ -32,12 +32,12 @@ app.get('/middleware', function (req, res, next) {
 app.get('/middleware', function (req, res, next) {
   res.status(200).send({
     result: req.passed
-  }).end('');
+  }).end();
 });
 
 app.get('/async', function (req, res, next) {
   setTimeout(function () {
-    res.status(202).end('');
+    res.status(202).end();
   }, 100);
 });
 
@@ -48,13 +48,13 @@ app.get('/err', function (req, res, next) {
 var mw = regio.router();
 
 mw.get('/test', function (req, res) {
-  res.status(202).end('');
+  res.status(202).end();
 });
 
 var inner = regio.router();
 
 inner.get('/test', function (req, res) {
-  res.status(202).end('');
+  res.status(202).end();
 });
 
 inner.get('/err', function (req, res, next) {
