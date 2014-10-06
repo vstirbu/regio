@@ -20,6 +20,32 @@ So, I've decided to keep the test framework around and use express middleware an
 npm install regio
 ```
 
+## Express compatibility
+
+* Application
+  * regio() similar to [express()](http://expressjs.com/4x/api.html#express)
+  * [use](http://expressjs.com/4x/api.html#app.use)
+  * [all](http://expressjs.com/4x/api.html#app.all)
+  * [listen](http://expressjs.com/4x/api.html#app.listen)
+
+* Request
+  * req.params
+
+* Response
+  * res.status
+  * res.set
+  * res.get
+  * res.send
+
+* Router
+  * [router()](http://expressjs.com/4x/api.html#router)
+  * [router.use](http://expressjs.com/4x/api.html#router.use)
+  * [router.VERB](http://expressjs.com/4x/api.html#router.VERB)
+  * [router.all](http://expressjs.com/4x/api.html#router.all)
+
+Middleware
+  * can be used application and router level, using ```.use``` or ```.verb```.
+
 ## Tests
 
 Currently the test run in node but the plan is to move them to colony.
