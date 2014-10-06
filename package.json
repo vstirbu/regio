@@ -1,5 +1,5 @@
 {
-  "name": "regional",
+  "name": "regio",
   "version": "0.1.0",
   "description": "Minimalistic web development framework for embedded devices, aspiring to have Express API surface",
   "main": "lib/index.js",

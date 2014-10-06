@@ -50,7 +50,7 @@ test('all', function (t) {
     request.post(baseUrl + '/allRoute').end(function (res) {
       t.equal(res.status, 202, 'post request on all route');
       t.end();
-    })
+    });
   });
 });
 
@@ -65,7 +65,7 @@ test('params', function (t) {
   request.get(baseUrl + '/pathWith/123').end(function (res) {
     t.deepEqual(res.body, { param: '123' }, 'get parameters values');
     t.end();
-  })
+  });
 });
 
 test('mw-success', function (t) {
