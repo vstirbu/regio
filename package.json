@@ -4,7 +4,8 @@
   "description": "Minimalist web framework with express-like aspirations, targeted at embedded devices.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "node ./test"
+    "test": "node ./test",
+    "test-colony": "colony ./test"
   },
   "author": "Vlad Stirbu",
   "repository": {
