@@ -17,8 +17,15 @@ test('get', function (t) {
 });
 
 test('no method', function (t) {
-  request.post(baseUrl + '/noMethod').end(function (res) {
+  request.post(baseUrl + '/get').end(function (res) {
     t.equal(res.status, 404, 'route with no method');
+    t.end();
+  });
+});
+
+test('no route', function (t) {
+  request.get(baseUrl + '/no-route').end(function (res) {
+    t.equal(res.status, 404, 'no route');
     t.end();
   });
 });
