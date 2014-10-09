@@ -55,6 +55,7 @@ var server = app.listen(8080, function() {
   * [use](http://expressjs.com/4x/api.html#app.use)
   * [all](http://expressjs.com/4x/api.html#app.all)
   * [listen](http://expressjs.com/4x/api.html#app.listen)
+  * [mountpath](http://expressjs.com/4x/api.html#app.mountpath)
 
 * Request
   * req.params

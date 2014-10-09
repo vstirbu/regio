@@ -77,4 +77,37 @@ app.get('/a/:param/abc/:foo', function (req, res) {
   res.status(200).send(req.params).end();
 });
 
+var queue = regio.router();
+
+queue.use(function(req, res, next) {
+  req.queue = [];
+  req.queue.push('one');
+  console.log('>');
+  next();
+});
+
+queue.use(function(req, res, next) {
+  req.queue.push('two');
+  console.log('>>');
+  next();
+});
+
+queue.get('/', function (req, res) {
+  res.status(201).end();
+});
+
+queue.get('/test', function (req, res, next) {
+  res.status(200).send({
+    queue: req.queue
+  }).end();
+});
+
+queue.get('/a/:param', function (req, res, next) {
+  res.status(200).send({
+    param: req.params.param
+  }).end();
+});
+
+app.use('/mw-q', queue);
+
 module.exports = app;

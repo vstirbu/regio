@@ -103,6 +103,31 @@ test('inner-mw-success', function (t) {
   });
 });
 
+test('two middlware one after another on same route', function (t) {
+  request.get(baseUrl + '/mw-q/test').end(function (res) {
+    t.equal(res.status, 200);
+    t.deepEqual(res.body, {
+      queue: ['one', 'two']
+    });
+    t.end();
+  });
+});
+
+test('trailing slash missing', function (t) {
+  request.get(baseUrl + '/mw-q').end(function (res) {
+    t.equal(res.status, 201);
+    t.end();
+  });
+});
+
+test('params in mounter router', function (t) {
+  request.get(baseUrl + '/mw-q/a/abc').end(function (res) {
+    t.equal(res.status, 200);
+    t.deepEqual(res.body, {param: 'abc'});
+    t.end();
+  });
+});
+
 test('close', function (t) {
   server.close(function () {
     t.end();

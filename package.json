@@ -1,6 +1,6 @@
 {
   "name": "regio",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Minimalist web framework with express-like aspirations, targeted at embedded devices.",
   "main": "lib/index.js",
   "scripts": {
