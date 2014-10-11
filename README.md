@@ -2,7 +2,7 @@
 
 Minimalist web framework with express-like aspirations, targeted at embedded devices like [Tessel](https://tessel.io) and [Espruino](http://www.espruino.com). Therefore, instead being a mighty express it is just a regional train...
 
-[![Code Climate](https://codeclimate.com/github/vstirbu/regio/badges/gpa.svg)](https://codeclimate.com/github/vstirbu/regio)
+[![Build Status](https://travis-ci.org/vstirbu/regio.svg?branch=master)](https://travis-ci.org/vstirbu/regio) [![Code Climate](https://codeclimate.com/github/vstirbu/regio/badges/gpa.svg)](https://codeclimate.com/github/vstirbu/regio)
 
 ## Motivation
 
