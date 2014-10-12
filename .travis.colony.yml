@@ -1,0 +1,26 @@
+description: regio on colony
+
+language: objective-c
+
+before_install:
+  - brew update
+  - brew tap tessel/tools
+  - brew install gyp ninja
+  - brew install node || true
+  - npm config set spin=false
+  - git clone --recursive https://github.com/tessel/runtime.git
+  - cd runtime
+  - npm install
+  - npm install -g colony-compiler
+  - make colony
+  - npm link --local
+  - cd ..
+
+install:
+  - npm install
+  
+before_script:
+  - colony test/test-server.js
+
+script:
+  - npm test
