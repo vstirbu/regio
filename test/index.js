@@ -1,12 +1,25 @@
 var test = require('tape'),
     request = require('superagent'),
+    regio = require('../lib/'),
     port = 8080,
     baseUrl = 'http://localhost:' + port;
 
 var app = require('./support/server');
 
+var eventMiddleware = regio.router();
 var server = app.listen(8080, function() {
   console.log('app started on port', server.address().port);
+});
+
+test('mount event', function (t) {
+  var mountPath = '/events';
+  eventMiddleware.on('mount', function (parent, path) {
+    t.deepEqual(parent, app);
+    t.equal(path, mountPath, 'mount path');
+    t.end();
+  });
+
+  app.use(mountPath, eventMiddleware);
 });
 
 test('get', function (t) {
@@ -120,7 +133,7 @@ test('trailing slash missing', function (t) {
   });
 });
 
-test('params in mounter router', function (t) {
+test('params in mounted router', function (t) {
   request.get(baseUrl + '/mw-q/a/abc').end(function (res) {
     t.equal(res.status, 200);
     t.deepEqual(res.body, {param: 'abc'});
