@@ -30,18 +30,29 @@ var regio = require('regio');
 var app = regio();
 
 app.get('/', function(req, res) {
-  res.status(200).end();
-});
-
-var middleware = regio.router();
-
-middleware('/', function (req, res) {
   res.status(200).send({
-    message: 'I\'m a middleware'
+    message: 'Hello World'
   }).end();
 });
 
-app.use('/middleware', middleware);
+app.use(function (req, res, next) {
+  req.message = 'added by middleware';
+  next();
+});
+
+var subapp = regio.router();
+
+subapp.get('/', function(req, res) {
+  res.status(200).send({
+    message: 'I\'m a mounted application'
+  }).end();
+});
+
+subapp.on('active', function() {
+  // server is up, I can receive requests
+});
+
+app.use('/mounted', subapp);
 
 var server = app.listen(8080, function() {
   console.log('app started on port', server.address().port);
@@ -55,7 +66,7 @@ var server = app.listen(8080, function() {
   * [use](http://expressjs.com/4x/api.html#app.use)
   * [all](http://expressjs.com/4x/api.html#app.all)
   * [listen](http://expressjs.com/4x/api.html#app.listen)
-  * [mountpath](http://expressjs.com/4x/api.html#app.mountpath)
+  * mountpath
 
 * Request
   * req.params
@@ -71,6 +82,9 @@ var server = app.listen(8080, function() {
   * [router.use](http://expressjs.com/4x/api.html#router.use)
   * [router.VERB](http://expressjs.com/4x/api.html#router.VERB)
   * [router.all](http://expressjs.com/4x/api.html#router.all)
+  * events
+    * _mounted_ is triggered when router is mounted
+    * _active_ is triggered when server is listening
 
 Middleware
   * can be used application and router level, using ```.use``` or ```.verb```.
