@@ -7,8 +7,24 @@ var test = require('tape'),
 var app = require('./support/server');
 
 var eventMiddleware = regio.router();
+
+var address;
+
+function getAddress() {
+  return address;
+}
+
 var server = app.listen(8080, function() {
   console.log('app started on port', server.address().port);
+});
+
+app.on('active', function (activeAddress) {
+  address = activeAddress;
+});
+
+test('active event', function (t) {
+  t.deepEqual(getAddress(), {port: 8080}, 'active event triggered');
+  t.end();
 });
 
 test('mount event', function (t) {
