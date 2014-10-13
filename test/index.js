@@ -23,7 +23,8 @@ app.on('active', function (activeAddress) {
 });
 
 test('active event', function (t) {
-  t.deepEqual(getAddress(), {port: 8080}, 'active event triggered');
+  t.equal(getAddress().port, 8080, 'active event triggered');
+  t.equal(getAddress().family, 'IPv4', 'IPv4 family');
   t.end();
 });
 
